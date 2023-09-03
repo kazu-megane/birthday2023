@@ -1,0 +1,5 @@
+@use "./reset.scss";
+@use "./default.scss";
+
+@include reset.reset();
+@include default.default();
