@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { MainContent } from "@/components/MainContent";
+import { AudioVisual } from "@/components/AudioVisual";
 
 export default function Home() {
   return (
@@ -10,7 +11,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
-        <MainContent />
+        {/* <MainContent /> */}
+        <AudioVisual />
       </main>
     </>
   );
