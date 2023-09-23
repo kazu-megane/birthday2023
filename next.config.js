@@ -1,11 +1,14 @@
 /** @type {import('next').NextConfig} */
 
-const branchName = process.env.BRANCH_NAME ? "/" + process.env.BRANCH_NAME : "";
+const urlPrefix = process.env.URL_PREFIX ? "/" + process.env.URL_PREFIX : "";
 
 const nextConfig = {
   reactStrictMode: false,
-  assetPrefix: branchName,
-  basePath: branchName,
+  assetPrefix: urlPrefix,
+  basePath: urlPrefix,
+  publicRuntimeConfig: {
+    urlPrefix,
+  },
 };
 
 module.exports = nextConfig;
