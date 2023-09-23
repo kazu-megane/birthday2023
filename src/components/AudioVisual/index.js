@@ -14,6 +14,7 @@ const Sketch = dynamic(
 );
 
 export const AudioVisual = () => {
+  const { publicRuntimeConfig } = getConfig();
   let myFont;
   const myText = "Happy Birthday Aika.";
 
@@ -28,7 +29,7 @@ export const AudioVisual = () => {
       "https://fonts.gstatic.com/ea/notosansjapanese/v6/NotoSansJP-Bold.otf";
     myFont = p5.loadFont(url);
     p5.soundFormats("mp3");
-    sound = p5.loadSound("/audio.mp3");
+    sound = p5.loadSound(`${publicRuntimeConfig.urlPrefix}/audio.mp3`);
   };
 
   const setup = (p5, canvasParentRef) => {
