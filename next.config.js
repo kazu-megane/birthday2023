@@ -3,7 +3,7 @@
 const branchName = process.env.BRANCH_NAME ? "/" + process.env.BRANCH_NAME : "";
 
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   assetPrefix: branchName,
   basePath: branchName,
 };
