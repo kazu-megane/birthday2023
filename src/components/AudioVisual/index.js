@@ -18,11 +18,12 @@ export const AudioVisual = () => {
   const { publicRuntimeConfig } = getConfig();
   let myFont;
   const myText = "Happy Birthday Aika.";
+  let isPlaying = false;
+  let isFirstClick = true;
 
   let sound;
   let amp;
   let index = 0;
-  let OPACITY = 1.0;
 
   const preload = (p5) => {
     // 画像などのロードを行う
@@ -42,7 +43,7 @@ export const AudioVisual = () => {
     p5.textSize(30);
     p5.textAlign(p5.CENTER, p5.CENTER);
     p5.frameRate(24);
-    sound.play();
+    // sound.play();
     amp = new myp5.Amplitude();
   };
 
@@ -66,9 +67,14 @@ export const AudioVisual = () => {
   };
 
   const draw = (p5) => {
+    p5.background(0);
+    if (isFirstClick) {
+      p5.text("Click to play", 0, 0);
+      return;
+    }
+
     const vol = amp.getLevel();
     // p5.background(20, 20, 45);
-    p5.background(0);
     // p5.push();
     // for (let i = 0; i < 80; i++) {
     //   p5.fill(50, 55, 100); // 色の追加
@@ -119,6 +125,16 @@ export const AudioVisual = () => {
         preload={preload}
         setup={setup}
         draw={draw}
+        mouseClicked={() => {
+          if (!isPlaying) {
+            isFirstClick = false;
+            isPlaying = true;
+            sound.play();
+          } else {
+            isPlaying = false;
+            sound.stop();
+          }
+        }}
         windowResized={windowResized}
       />
     </div>
